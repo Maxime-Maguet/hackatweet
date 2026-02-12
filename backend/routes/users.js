@@ -5,33 +5,34 @@ const uid2 = require("uid2");
 const bcrypt = require("bcrypt");
 const User = require("../models/users");
 
-router.post("/signup", function (req, res) {
+router.post("/signup", (req, res) => {
+  // 1. On vérifie si les champs sont vides
   if (!checkBody(req.body, ["firstname", "username", "password"])) {
-    res.json({ result: false, error: "Missing or empty fields" });
-    return;
-  } else {
-    User.findOne({ username: req.body.username }).then((data) => {
-      if (data === null) {
-        const hash = bcrypt.hashSync(req.body.password, 10);
-
-        const token = uid2;
-
-        const newUser = new User({
-          firstname: req.body.firstname,
-          username: req.body.username,
-          password: hash,
-          token: uid2(32),
-          createDate: new Date(),
-        });
-
-        newUser.save().then((newDoc) => {
-          res.json({ result: true, token: newDoc.token });
-        });
-      } else {
-        res.json({ result: false, error: "users already existing" });
-      }
-    });
+    return res.json({ result: false, error: "Missing or empty fields" });
   }
+
+  // 2. On vérifie si l'utilisateur existe déjà
+  User.findOne({ username: req.body.username }).then((data) => {
+    if (data === null) {
+      const hash = bcrypt.hashSync(req.body.password, 10);
+
+      const newUser = new User({
+        firstname: req.body.firstname,
+        username: req.body.username,
+        password: hash,
+        token: uid2(32),
+        createDate: new Date(),
+      });
+
+      // 3. On sauvegarde le nouvel utilisateur
+      newUser.save().then((newDoc) => {
+        res.json({ result: true, token: newDoc.token });
+      });
+    } else {
+      // 4. L'utilisateur existe déjà
+      res.json({ result: false, error: "User already exists" });
+    }
+  });
 });
 
 router.post("/signin", (req, res) => {
@@ -39,6 +40,14 @@ router.post("/signin", (req, res) => {
     res.json({ result: false, error: "missing or empty fields" });
     return;
   }
+
+  User.findOne({ username: req.body.username }).then((data) => {
+    if (data && bcrypt.compareSync(req.body.password, data.password)) {
+      res.json({ result: true, token: data.token });
+    } else {
+      res.json({ result: false, error: "Username or password is incorrect." });
+    }
+  });
 
   User.findOne({ username: req.body.username }).then((data) => {
     if (data && bcrypt.compareSync(req.body.password, data.password)) {
