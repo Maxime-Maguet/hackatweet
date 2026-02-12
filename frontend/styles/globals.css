@@ -1,7 +1,4 @@
-@font-face {
-  font-family: "MontHeavy";
-  src: url("/fonts/Mont-Heavy.otf") format("opentype");
-}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap");
 
 * {
   box-sizing: border-box;
@@ -26,7 +23,7 @@ h1,
 h2,
 h3,
 .font-heavy {
-  font-family: "MontHeavy", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 a {
