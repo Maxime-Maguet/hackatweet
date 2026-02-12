@@ -38,17 +38,22 @@ res.json({result: false, error: "users already existing" })
 
 
 
+router.post('/signin', (req, res) => {
 
+if(!checkBody(req.body, ['firstname','username', 'password'])) {
+res.json({result: false, error: 'missing or empty fields' });
+return;
+}
 
+User.findOne({username: req.body.username}).then(data => {
+if(data && bcrypt.compareSync(req.body.password, data.password)) {
+res.json({result: true, token: data.token})
+} else {
+res.json({result: false, error: 'Username or password is incorrect.' })
 
+}})
 
-
-
-
-
-
-
-
+});
 
 
 
