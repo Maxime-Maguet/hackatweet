@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.leftSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100vh;
+}
+
+.logoX {
+  width: 50%;
+  max-width: 400px;
+  height: auto;
+}
+
+.rightSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 35px;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.signinButton,
+.signupButton {
+  padding: 10px;
+  border-radius: 20px;
+}

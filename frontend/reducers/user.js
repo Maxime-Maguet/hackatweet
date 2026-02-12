@@ -10,16 +10,16 @@ export const userSlice = createSlice({
   reducers: {
     // Action pour se connecter
     login: (state, action) => {
+      state.value.firstname = action.payload.firstname;
       state.value.username = action.payload.username;
       state.value.token = action.payload.token;
-      state.value.firstname = action.payload.firstname;
     },
 
     // Action pour se déconnecter
     logout: (state) => {
+      state.value.firstname = null;
       state.value.username = null;
       state.value.token = null;
-      state.value.firstname = null;
     },
   },
 });
