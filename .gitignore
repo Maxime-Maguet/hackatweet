@@ -1,23 +1,14 @@
 # Dépendances
 node_modules/
-.pnp
-.pnp.js
 
-# Environnement (Tes clés secrètes !)
+# Environnement (Clés secrètes)
 .env
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
 
 # Next.js
 .next/
 out/
 
-# OS
+# Divers
 .DS_Store
-Thumbs.db
-
-# Yarn
-yarn-debug.log*
 yarn-error.log*
