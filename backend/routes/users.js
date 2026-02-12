@@ -37,12 +37,7 @@ res.json({result: false, error: "users already existing" })
 
 
 
-router.post('/signin', (req, res) => {
 
-if(!checkBody(req.body ['firstname','username',]))
-
-
-})
 
 
 
