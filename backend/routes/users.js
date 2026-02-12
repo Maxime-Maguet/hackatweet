@@ -40,7 +40,7 @@ res.json({result: false, error: "users already existing" })
 
 router.post('/signin', (req, res) => {
 
-if(!checkBody(req.body, ['firstname','username', 'password'])) {
+if(!checkBody(req.body, ['username', 'password'])) {
 res.json({result: false, error: 'missing or empty fields' });
 return;
 }
