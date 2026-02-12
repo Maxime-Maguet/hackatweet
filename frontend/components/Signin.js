@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../reducers/user";
+import styles from "../styles/Signup.module.css";
 
-function Signin() {
+function Signin(props) {
   const [signInUsername, setSignInUsername] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
 
   const dispatch = useDispatch();
+
   const handleConnection = () => {
     fetch("http://localhost:3000/users/signin", {
       method: "POST",
@@ -22,7 +24,7 @@ function Signin() {
           dispatch(login({ username: signInUsername, token: data.token }));
           setSignInUsername("");
           setSignInPassword("");
-          setIsModalVisible(false);
+          props.close();
         } else {
           alert("Identifiants incorrects");
         }

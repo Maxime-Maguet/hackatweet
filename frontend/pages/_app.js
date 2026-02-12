@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-
+import "antd/dist/antd.css";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "../reducers/user";

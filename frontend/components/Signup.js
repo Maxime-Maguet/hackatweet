@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../reducers/user";
+import styles from "../styles/Signup.module.css";
 
 function Signup(props) {
   const dispatch = useDispatch();
+
   const [signUpFirstname, setsignUpFirstname] = useState("");
   const [signUpUsername, setSignUpUsername] = useState("");
   const [signUpPassword, setSignUpPassword] = useState("");
@@ -20,7 +22,12 @@ function Signup(props) {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
+
         if (data.result) {
+          setsignUpFirstname("");
+          setSignUpUsername("");
+          props.close();
           dispatch(
             login({
               firstname: signUpFirstname,
@@ -37,7 +44,7 @@ function Signup(props) {
   return (
     <div className={styles.registerContainer}>
       <div className={styles.registerSection}>
-        <img src="/X-logo.png" alt="Logo" />
+        <img className={styles.logo} src="/X-logo.png" alt="Logo" />
         <h3>Create your Hackatweet account</h3>
         <input
           onChange={(e) => setsignUpFirstname(e.target.value)}
@@ -62,7 +69,9 @@ function Signup(props) {
           id="signUpPassword"
         />
 
-        <button onClick={handleRegister}>Sign up</button>
+        <button className={styles.signupBtn} onClick={handleRegister}>
+          Sign up
+        </button>
       </div>
     </div>
   );

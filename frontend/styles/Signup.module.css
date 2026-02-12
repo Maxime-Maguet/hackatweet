@@ -1,0 +1,16 @@
+.registerContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.registerSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.registerSection h3 {
+  color: black;
+}
+.signupBtn {
+  border-radius: 15px;
+}
