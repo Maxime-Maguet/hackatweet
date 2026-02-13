@@ -18,16 +18,16 @@ res.json({result: true, tweets: data})})
 
 
 router.post('/viewTweet', (req, res) => {
-// console.log("BODY:", req.body)
-User.findOne({username: req.body.username})
+User.findOne({token: req.body.token})
 
 .then(data => {
-// console.log("USER FOUND:", data);
+
 if(data !== null) {
 const newTweet = new Tweet ({
 user: data._id,
 content: req.body.content,
-createdat: now(),
+createdat: new Date(),
+likes: [],
 })
 newTweet.save().then((newDoc) => {
 res.json({ result: true, tweet: newDoc}); 
