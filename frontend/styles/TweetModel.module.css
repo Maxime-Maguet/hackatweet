@@ -1,0 +1,41 @@
+.tweet {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  border-bottom: 1px solid #2f3336;
+  color: white;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+}
+
+.textContent {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 10px;
+  color: #71767b;
+}
+
+.icon svg {
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.icon svg:hover {
+  color: #1d9bf0;
+}
+
+.tweet > div {
+  flex: 1;
+}

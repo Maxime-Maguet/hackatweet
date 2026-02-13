@@ -6,6 +6,7 @@ import { logout } from "../reducers/user";
 import { AliwangwangOutlined, XOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import { useRouter } from "next/router";
+import LastTweet from "./LastTweets";
 
 function Home() {
   const dispatch = useDispatch();
@@ -57,7 +58,9 @@ function Home() {
             <h4>Home</h4>
             <TweetInput />
           </div>
-          <div className={styles.lastTweet}></div>
+          <div className={styles.lastTweet}>
+            <LastTweet />
+          </div>
         </div>
 
         <div className={styles.rightContent}>
