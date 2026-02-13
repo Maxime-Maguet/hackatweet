@@ -1,4 +1,5 @@
 import styles from "../styles/Home.module.css";
+import TweetInput from "./Tweet";
 
 function Home() {
   return (
@@ -18,13 +19,7 @@ function Home() {
         <div className={styles.middleContent}>
           <div className={styles.newTweet}>
             <h4>Home</h4>
-            <input
-              type="text"
-              placeholder="What's up?"
-              id="newTweet"
-              maxLength={280}
-            />
-            <button className={styles.newTweet}>Tweet</button>
+            <TweetInput/>
           </div>
           <div className={styles.lastTweet}></div>
         </div>
