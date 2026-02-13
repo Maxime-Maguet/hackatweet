@@ -1,16 +1,29 @@
 .registerContainer {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .registerSection {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
 }
 .registerSection h3 {
   color: black;
 }
-.signupBtn {
-  border-radius: 15px;
+.signBtn {
+  width: 50%;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #044d92;
+  color: rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+}
+
+.logo {
+  transform: rotate(90deg) translateY(-100%);
+  transform-origin: top left;
 }

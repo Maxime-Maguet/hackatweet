@@ -1,17 +1,32 @@
 import styles from "../styles/Home.module.css";
 import TweetInput from "./Tweet";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout } from "../reducers/user";
+import { AliwangwangOutlined, XOutlined } from "@ant-design/icons";
 
 function Home() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value);
+  console.log(user);
+
   return (
     <>
       <div className={styles.homeContainer}>
         <div className={styles.leftContent}>
-          <img src="/X-logo.png" alt="Logo" className={styles.logoX} />
+          <XOutlined
+            className={styles.logoX}
+            style={{ fontSize: "40px", color: "white" }}
+          />
           <div className={styles.userInfo}>
-            <div className={styles.avatar}></div>
+            <div className={styles.avatar}>
+              <AliwangwangOutlined
+                style={{ fontSize: "32px", color: "#ffffff" }}
+              />
+            </div>
             <div className={styles.name}>
-              <p>Firstname</p>
-              <span>@username</span>
+              <p>{user.firstname}</p>
+              <span>@{user.username}</span>
             </div>
           </div>
         </div>
@@ -19,7 +34,7 @@ function Home() {
         <div className={styles.middleContent}>
           <div className={styles.newTweet}>
             <h4>Home</h4>
-            <TweetInput/>
+            <TweetInput />
           </div>
           <div className={styles.lastTweet}></div>
         </div>
