@@ -4,6 +4,7 @@ import Signin from "./Signin";
 import { useState } from "react";
 import { Modal } from "antd";
 import { useSelector, useDispatch } from "react-redux";
+import { XOutlined } from "@ant-design/icons";
 
 function Login() {
   const user = useSelector((state) => state.user.value);
@@ -26,7 +27,10 @@ function Login() {
   return (
     <div className={styles.container}>
       <div className={styles.leftSection}>
-        <img src="/X-logo.png" alt="Logo" className={styles.logoX} />
+        <XOutlined
+          className={styles.logoX}
+          style={{ fontSize: "150px", color: "white" }}
+        />
       </div>
       <div className={styles.rightSection}>
         <h1 className={styles.mainText}>See What's happening</h1>

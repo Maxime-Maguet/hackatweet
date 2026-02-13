@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { login } from "../reducers/user";
 import styles from "../styles/Signup.module.css";
-
+import { XOutlined } from "@ant-design/icons";
 function Signup(props) {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -48,7 +48,10 @@ function Signup(props) {
   return (
     <div className={styles.registerContainer}>
       <div className={styles.registerSection}>
-        <img className={styles.logo} src="/X-logo.png" alt="Logo" />
+        <XOutlined
+          className={styles.logo}
+          style={{ fontSize: "40px", color: "black" }}
+        />
         <h3>Create your Hackatweet account</h3>
         <input
           onChange={(e) => setsignUpFirstname(e.target.value)}
@@ -73,7 +76,7 @@ function Signup(props) {
           id="signUpPassword"
         />
 
-        <button className={styles.signupBtn} onClick={handleRegister}>
+        <button className={styles.signBtn} onClick={handleRegister}>
           Sign up
         </button>
       </div>

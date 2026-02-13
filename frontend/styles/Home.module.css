@@ -4,20 +4,27 @@
 }
 
 .leftContent {
-  border: 1px solid white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 250px;
   height: 100vh;
-  padding: 20px;
+  padding: 30px 20px;
   box-sizing: border-box;
+}
+
+.bottomSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .logoX {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  transform: rotate(90deg) translateY(-100%);
+  transform-origin: top left;
 }
 
 .userInfo {
@@ -27,6 +34,9 @@
 }
 
 .avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 50px;
   height: 50px;
   background-color: #657786;
@@ -42,4 +52,10 @@
   color: #657786;
   margin: 0;
   font-size: 0.9rem;
+}
+
+.logOutBtn {
+  width: 55%;
+  border-color: #657786;
+  color: #657786;
 }
