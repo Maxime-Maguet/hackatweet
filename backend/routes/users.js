@@ -6,12 +6,10 @@ const bcrypt = require("bcrypt");
 const User = require("../models/users");
 
 router.post("/signup", (req, res) => {
- 
   if (!checkBody(req.body, ["firstname", "username", "password"])) {
     return res.json({ result: false, error: "Missing or empty fields" });
   }
 
-  
   User.findOne({ username: req.body.username }).then((data) => {
     if (data === null) {
       const hash = bcrypt.hashSync(req.body.password, 10);
@@ -24,12 +22,15 @@ router.post("/signup", (req, res) => {
         createDate: new Date(),
       });
 
-      
       newUser.save().then((newDoc) => {
-        res.json({ result: true, token: newDoc.token });
+        res.json({
+          result: true,
+          token: newDoc.token,
+          username: newDoc.username,
+          firstname: newDoc.firstname,
+        });
       });
     } else {
-      
       res.json({ result: false, error: "User already exists" });
     }
   });
@@ -43,7 +44,12 @@ router.post("/signin", (req, res) => {
 
   User.findOne({ username: req.body.username }).then((data) => {
     if (data && bcrypt.compareSync(req.body.password, data.password)) {
-      res.json({ result: true, token: data.token });
+      res.json({
+        result: true,
+        token: data.token,
+        username: data.username,
+        firstname: data.firstname,
+      });
     } else {
       res.json({ result: false, error: "Username or password is incorrect." });
     }

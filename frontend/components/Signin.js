@@ -8,6 +8,7 @@ import { XOutlined } from "@ant-design/icons";
 function Signin(props) {
   const [signInUsername, setSignInUsername] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
+  const [signInFirstname, setSignInFirstname] = useState("");
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -24,9 +25,16 @@ function Signin(props) {
       .then((response) => response.json())
       .then((data) => {
         if (data.result) {
-          dispatch(login({ username: signInUsername, token: data.token }));
+          dispatch(
+            login({
+              username: signInUsername,
+              token: data.token,
+              firstname: data.firstname,
+            }),
+          );
           setSignInUsername("");
           setSignInPassword("");
+          setSignInFirstname("");
           router.push("/home");
           props.close();
         } else {
