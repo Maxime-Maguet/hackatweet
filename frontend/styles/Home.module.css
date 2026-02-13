@@ -4,14 +4,19 @@
 }
 
 .leftContent {
-  border: 1px solid white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 250px;
   height: 100vh;
-  padding: 20px;
+  padding: 30px 20px;
   box-sizing: border-box;
+}
+
+.bottomSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .logoX {
@@ -47,4 +52,10 @@
   color: #657786;
   margin: 0;
   font-size: 0.9rem;
+}
+
+.logOutBtn {
+  width: 55%;
+  border-color: #657786;
+  color: #657786;
 }

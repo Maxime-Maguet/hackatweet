@@ -4,11 +4,16 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../reducers/user";
 import { AliwangwangOutlined, XOutlined } from "@ant-design/icons";
+import { Button } from "antd";
 
 function Home() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
   console.log(user);
+
+  const handleLogOut = () => {
+    console.log("bye bye");
+  };
 
   return (
     <>
@@ -18,16 +23,27 @@ function Home() {
             className={styles.logoX}
             style={{ fontSize: "40px", color: "white" }}
           />
-          <div className={styles.userInfo}>
-            <div className={styles.avatar}>
-              <AliwangwangOutlined
-                style={{ fontSize: "32px", color: "#ffffff" }}
-              />
+          <div className={styles.bottomSection}>
+            <div className={styles.userInfo}>
+              <div className={styles.avatar}>
+                <AliwangwangOutlined
+                  style={{ fontSize: "32px", color: "#ffffff" }}
+                />
+              </div>
+              <div className={styles.name}>
+                <p>{user.firstname}</p>
+                <span>@{user.username}</span>
+              </div>
             </div>
-            <div className={styles.name}>
-              <p>{user.firstname}</p>
-              <span>@{user.username}</span>
-            </div>
+            <Button
+              type="default"
+              ghost
+              size="small"
+              onClick={handleLogOut}
+              className={styles.logOutBtn}
+            >
+              Logout
+            </Button>
           </div>
         </div>
 
