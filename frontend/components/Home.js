@@ -2,17 +2,22 @@ import styles from "../styles/Home.module.css";
 import TweetInput from "./Tweet";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout } from "../reducers/user";
+import { logout } from "../reducers/user";
 import { AliwangwangOutlined, XOutlined } from "@ant-design/icons";
 import { Button } from "antd";
+import { useRouter } from "next/router";
 
 function Home() {
   const dispatch = useDispatch();
+  const router = useRouter();
+
   const user = useSelector((state) => state.user.value);
   console.log(user);
 
   const handleLogOut = () => {
     console.log("bye bye");
+    dispatch(logout());
+    router.push("/");
   };
 
   return (
