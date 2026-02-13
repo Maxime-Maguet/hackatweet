@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 import { login } from "../reducers/user";
 import styles from "../styles/Signup.module.css";
 
 function Signup(props) {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const [signUpFirstname, setsignUpFirstname] = useState("");
   const [signUpUsername, setSignUpUsername] = useState("");
@@ -27,7 +29,9 @@ function Signup(props) {
         if (data.result) {
           setsignUpFirstname("");
           setSignUpUsername("");
+          setSignUpPassword("");
           props.close();
+          router.push("/home");
           dispatch(
             login({
               firstname: signUpFirstname,

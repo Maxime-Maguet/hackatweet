@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../reducers/user";
 import styles from "../styles/Signup.module.css";
+import { useRouter } from "next/router";
 
 function Signin(props) {
   const [signInUsername, setSignInUsername] = useState("");
   const [signInPassword, setSignInPassword] = useState("");
 
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleConnection = () => {
     fetch("http://localhost:3000/users/signin", {
@@ -24,6 +26,7 @@ function Signin(props) {
           dispatch(login({ username: signInUsername, token: data.token }));
           setSignInUsername("");
           setSignInPassword("");
+          router.push("/home");
           props.close();
         } else {
           alert("Identifiants incorrects");
