@@ -21,7 +21,7 @@ function LastTweet() {
   const tweets = tweetData.map((data, i) => {
     return <TweetModel key={i} {...data} />;
   });
-  return <div>{tweet}</div>;
+  return <div>{tweets}</div>;
 }
 
 export default LastTweet;
