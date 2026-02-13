@@ -6,12 +6,12 @@ const bcrypt = require("bcrypt");
 const User = require("../models/users");
 
 router.post("/signup", (req, res) => {
-  // 1. On vérifie si les champs sont vides
+ 
   if (!checkBody(req.body, ["firstname", "username", "password"])) {
     return res.json({ result: false, error: "Missing or empty fields" });
   }
 
-  // 2. On vérifie si l'utilisateur existe déjà
+  
   User.findOne({ username: req.body.username }).then((data) => {
     if (data === null) {
       const hash = bcrypt.hashSync(req.body.password, 10);
@@ -24,12 +24,12 @@ router.post("/signup", (req, res) => {
         createDate: new Date(),
       });
 
-      // 3. On sauvegarde le nouvel utilisateur
+      
       newUser.save().then((newDoc) => {
         res.json({ result: true, token: newDoc.token });
       });
     } else {
-      // 4. L'utilisateur existe déjà
+      
       res.json({ result: false, error: "User already exists" });
     }
   });
